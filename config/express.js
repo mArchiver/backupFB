@@ -5,6 +5,7 @@ module.exports = function(app, config) {
     app.configure(function() {
         app.use(express.compress());
 
+        app.use(express.favicon( config.root +'/public/images/favicon.ico'));
         app.use(express.static(config.root + '/public'));
         app.set('port', config.port);
         app.set('views', config.root + '/app/views');
