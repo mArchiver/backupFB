@@ -6,7 +6,7 @@ module.exports = (grunt) ->
 
         # JsHint
         jshint:
-            files: ['app.js']
+            files: ['app.js', 'app/**/*.js', 'config/**/*.js', 'public/**/*.js']
             options:
                 globals:
                     console: true
