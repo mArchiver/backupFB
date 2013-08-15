@@ -2,6 +2,27 @@ doctype 5
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css")
+    link(rel="stylesheet", href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css")
+    link(rel="stylesheet", href="/stylesheets/style.css")
+
+    body.container
+        .masthead
+          ul.nav.nav-pills.pull-right
+            //- li.active
+            li
+              a(href='/')='Home'
+            li
+              a(href='/post')='Post'
+            li
+              a(href='/post/new')='New Post'
+            li
+              a(href='/reg')='Sign up'
+            li
+              a(href='/login')='Login'
+            li
+              a(href='/about')='About'
+          h1.muted='ezBlogQ'
+        hr
+
+        block content
