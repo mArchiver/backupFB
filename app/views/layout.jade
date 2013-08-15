@@ -7,22 +7,23 @@ html
     link(rel="stylesheet", href="/stylesheets/style.css")
 
     body.container
-        .masthead
-          ul.nav.nav-pills.pull-right
-            //- li.active
-            li
-              a(href='/')='Home'
-            li
-              a(href='/post')='Post'
-            li
-              a(href='/post/new')='New Post'
-            li
-              a(href='/reg')='Sign up'
-            li
-              a(href='/login')='Login'
-            li
-              a(href='/about')='About'
-          h1.muted='ezBlogQ'
-        hr
+        .navbar.navbar-inverse.navbar-fixed-top
+            .navbar-inner
+                .container
+                    button.btn.btn-navbar(type='button', data-toggle='collapse', data-target='.nav-collapse')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.brand(href='#') MyBackup
+                    .nav-collapse.collapse
+                        ul.nav
+                            li.active
+                                a(href='#') 備份
+                        ul.nav.pull-right
+                            li
+                                a(href='#') 登出
+
+
+
 
         block content
