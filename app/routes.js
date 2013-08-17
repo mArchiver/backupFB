@@ -9,5 +9,8 @@ module.exports = function(app){
     app.get('/me', user.showMe);
     app.get('/login/callback', user.loginCallback);
 
+    app.get('/user/:id', user.showUser);
+    app.get('/albums/:id', user.home);
+
 
 };

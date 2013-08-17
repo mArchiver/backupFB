@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  h1= "相簿列表"
+  - each i in data.data
+    div=i.name
+    div=i.link
+    a(href="/albums/" + i.id) link
+    hr
+

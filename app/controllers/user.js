@@ -9,13 +9,12 @@ FB.options({
 exports.home = function(req, res){
     res.render('index', {
         title: 'Express',
-        loginUrl : FB.getLoginUrl({ scope: 'user_about_me' })
+        loginUrl : FB.getLoginUrl({ scope: 'user_about_me,user_photos' })
     });
 };
 
 exports.showMe = function(req, res){
     var access_token = req.session.access_token;
-
     FB.setAccessToken(access_token);
 
     FB.api('/me', { 'limit' : 100 }, function (result) {
@@ -54,5 +53,20 @@ exports.loginCallback = function(req, res){
 
         });
     });
+};
 
+exports.showUser = function(req, res) {
+    var access_token = req.session.access_token;
+    FB.setAccessToken(access_token);
+    var userid = req.params.id;
+
+    FB.api('/' + userid + '/albums', { 'limit' : 100 }, function (result) {
+
+        console.log(result);
+
+        res.render('user/showUser', {
+            title: '個人資訊',
+            data : result
+        });
+    });
 };
