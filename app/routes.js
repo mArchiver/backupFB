@@ -3,6 +3,7 @@ module.exports = function(app){
 
 
     var user = require('./controllers/user');
+    var album =require('./controllers/album');
 
     app.get('/', user.home);
 
@@ -10,7 +11,8 @@ module.exports = function(app){
     app.get('/login/callback', user.loginCallback);
 
     app.get('/user/:id', user.showUser);
-    app.get('/albums/:id', user.home);
+
+    app.get('/album/:id', album.showAlbum);
 
 
 };

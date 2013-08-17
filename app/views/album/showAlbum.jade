@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  h1= 'title'
+  - each i in data.data
+    div=i.name
+    //- div=i.link
+    //- img(src= i.images[0].source , alt="")
+    a(href=i.images[0].source , target="_blank")
+        img(src=i.picture, alt="")
+    hr
+
+
