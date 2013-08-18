@@ -15,8 +15,7 @@ module.exports = function(app, config) {
         app.use(express.bodyParser());
         app.use(express.methodOverride());
         app.use(express.cookieParser('your secret here'));
-        app.use(express.cookieSession({ secret: 'your secret here', cookie: { maxAge: 60 * 60 * 1000 }}));
-
+        app.use(express.cookieSession());
         // app.use(express.session({ secret: 'keyboard cat' }));
 
         app.use(app.router);
