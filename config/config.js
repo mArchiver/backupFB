@@ -9,16 +9,19 @@ var development = {
 };
 
 var production = {
-
     baseUri: 'http://fb.dca.tw',
-
 };
 
 
-console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+//
+//
+//
+
 
 if (process.env.NODE_ENV === 'production') {
-    var config = merge( development, production);
+    module.exports = merge( development, production);
+}else {
+    module.exports = development;
 }
 
 
@@ -27,4 +30,5 @@ function merge(obj1,obj2){
     return obj1;
 }
 
-module.exports = config;
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
