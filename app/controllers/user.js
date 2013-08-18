@@ -9,7 +9,7 @@ FB.options({
 exports.home = function(req, res){
     res.render('index', {
         title: 'Express',
-        loginUrl : FB.getLoginUrl({ scope: 'user_about_me,user_photos' })
+        loginUrl : FB.getLoginUrl({ scope: 'user_about_me,user_photos,friends_photos' })
     });
 };
 
