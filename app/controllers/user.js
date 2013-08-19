@@ -26,33 +26,12 @@ exports.showMe = function(req, res){
 exports.loginCallback = function(req, res){
     var code = req.query.code;
 
-    FB.napi('oauth/access_token', {
-        client_id:      FB.options('appId'),
-        client_secret:  FB.options('appSecret'),
-        redirect_uri:   FB.options('redirectUri'),
-        code:           code
-    },
-    function extendAccessToken(err, result) {
-        if(err) {
-            console.log(err);
-            res.redirect('/');
-            // throw(err);
-        }else {
-            FB.napi('oauth/access_token', {
-                client_id:          FB.options('appId'),
-                client_secret:      FB.options('appSecret'),
-                grant_type:         'fb_exchange_token',
-                fb_exchange_token:  result.access_token
-            }, function (err, result) {
-                if(err) return next(err);
-
-                req.session.access_token = result.access_token;
-                // req.session.expires
-                res.redirect('/me');
-
-            });
-        }
+    getAccessToken( code, function(err, result) {
+        req.session.access_token = result.access_token;
+        res.redirect('/me');
     });
+
+
 };
 
 exports.showUser = function(req, res) {
@@ -70,3 +49,29 @@ exports.showUser = function(req, res) {
         });
     });
 };
+
+function getAccessToken(code, callback) {
+    FB.napi('oauth/access_token', {
+            client_id: FB.options('appId'),
+            client_secret: FB.options('appSecret'),
+            redirect_uri: FB.options('redirectUri'),
+            code: code
+        },
+        function extendAccessToken(err, result) {
+            if (err) {
+                callback(err, null);
+            } else {
+                FB.napi('oauth/access_token', {
+                        client_id: FB.options('appId'),
+                        client_secret: FB.options('appSecret'),
+                        grant_type: 'fb_exchange_token',
+                        fb_exchange_token: result.access_token
+                    },
+                    function(err, result) {
+
+                        callback(err, result);
+                    });
+            }
+        });
+
+}
