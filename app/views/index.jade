@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a( href=loginUrl ) link
+  .text-center
+      h1="MyBackup"
+      p="請先登入"
+      a.btn.btn-primary( href=loginUrl ) 使用Facebook登入
 
