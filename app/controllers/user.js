@@ -13,7 +13,7 @@ exports.showMe = function(req, res){
     var access_token = req.session.access_token;
     FB.setAccessToken(access_token);
 
-    FB.api('/me', { 'limit' : 100 }, function (result) {
+    FB.api('/me', { 'fields': 'id,name' }, function (result) {
 
         console.log(result);
 
