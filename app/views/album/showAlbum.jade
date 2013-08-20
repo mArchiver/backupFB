@@ -2,12 +2,26 @@ extends ../layout
 
 block content
   h1= 'title'
-  - each i in data.data
-    div=i.name
-    //- div=i.link
-    //- img(src= i.images[0].source , alt="")
-    a(href=i.images[0].source , target="_blank")
-        img(src=i.picture, alt="")
-    hr
+  div
+    if data.paging && data.paging.cursors
+      - var before = data.paging.cursors.before
+      - var after = data.paging.cursors.after
+
+      a.btn(href='/album/' + albumId + '/before/' + before )
+        i.icon-double-angle-left
+        =" 上一頁 "
+      a.btn(href='/album/' + albumId + '/after/' + after )
+        i.icon-double-angle-right
+        =" 下一頁 "
+
+      - each i in data.data
+        div=i.name
+        //- div=i.link
+        //- img(src= i.images[0].source , alt="")
+        a(href=i.images[0].source , target="_blank")
+            img(src=i.picture, alt="")
+        hr
+    else
+      ="沒有資料啦"
 
 

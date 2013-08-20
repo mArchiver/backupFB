@@ -13,6 +13,8 @@ module.exports = function(app){
     app.get('/user/:id', user.showUser);
 
     app.get('/album/:id', album.showAlbum);
+    app.get('/album/:id/after/:after', album.showAlbum);
+    app.get('/album/:id/before/:before', album.showAlbum);
 
 
 };
