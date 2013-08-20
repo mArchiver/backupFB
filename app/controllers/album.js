@@ -13,6 +13,7 @@ exports.showAlbum = function(req, res) {
 
     var params = {
         'limit' : 6,
+        'fields': 'id,name,picture,source,images',
         'after' : after,
         'before': before
     };
