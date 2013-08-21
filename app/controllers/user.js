@@ -28,7 +28,7 @@ exports.loginCallback = function(req, res){
     var code = req.query.code;
 
     User.getAccessToken( code, function(err, result) {
-
+		if (err) { res.redirect('/'); return; }
         req.session.access_token = result.access_token;
         res.redirect('/me');
     });
